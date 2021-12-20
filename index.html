@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css">
+    
+    <title>Chess Board</title>
+  </head>
+  <body>
+    
+    <div class="main-container">
+      <div class="chessboard-left">
+        <!-- 8th row with white as playing -->
+        <div class="white" id="00"></div>
+        <div class="black" id="01"></div>
+        <div class="white" id="02"></div>
+        <div class="black" id="03"></div>
+        <div class="white" id="04"></div>
+        <div class="black" id="05"></div>
+        <div class="white" id="06"></div>
+        <div class="black" id="07"></div>
+        
+        <!-- 7th row -->
+        <div class="black" id="10"></div>
+        <div class="white" id="11"></div>
+        <div class="black" id="12"></div>
+        <div class="white" id="13"></div>
+        <div class="black" id="14"></div>
+        <div class="white" id="15"></div>
+        <div class="black" id="16"></div>
+        <div class="white" id="17"></div>
+        
+        <!-- 6th row -->
+        <div class="white" id="20"></div>
+        <div class="black" id="21"></div>
+        <div class="white" id="22"></div>
+        <div class="black" id="23"></div>
+        <div class="white" id="24"></div>
+        <div class="black" id="25"></div>
+        <div class="white" id="26"></div>
+        <div class="black" id="27"></div>
+  
+        <!-- 5th row -->
+        <div class="black" id="30"></div>
+        <div class="white" id="31"></div>
+        <div class="black" id="32"></div>
+        <div class="white" id="33"></div>
+        <div class="black" id="34"></div>
+        <div class="white" id="35"></div>
+        <div class="black" id="36"></div>
+        <div class="white" id="37"></div>
+  
+        <!-- 4th row -->
+        <div class="white" id="40"></div>
+        <div class="black" id="41"></div>
+        <div class="white" id="42"></div>
+        <div class="black" id="43"></div>
+        <div class="white" id="44"></div>
+        <div class="black" id="45"></div>
+        <div class="white" id="46"></div>
+        <div class="black" id="47"></div>
+  
+        <!-- 3rd row -->
+        <div class="black" id="50"></div>
+        <div class="white" id="51"></div>
+        <div class="black" id="52"></div>
+        <div class="white" id="53"></div>
+        <div class="black" id="54"></div>
+        <div class="white" id="55"></div>
+        <div class="black" id="56"></div>
+        <div class="white" id="57"></div>
+  
+        <!-- 2nd row -->
+        <div class="white" id="60"></div>
+        <div class="black" id="61"></div>
+        <div class="white" id="62"></div>
+        <div class="black" id="63"></div>
+        <div class="white" id="64"></div>
+        <div class="black" id="65"></div>
+        <div class="white" id="66"></div>
+        <div class="black" id="67"></div>
+  
+        <!-- 1st row -->
+        <div class="black" id="70"></div>
+        <div class="white" id="71"></div>
+        <div class="black" id="72"></div>
+        <div class="white" id="73"></div>
+        <div class="black" id="74"></div>
+        <div class="white" id="75"></div>
+        <div class="black" id="76"></div>
+        <div class="white" id="77"></div>
+      </div>
+      <div class="right-menu">
+        <h2>Choose your piece</h2>
+        <div class="piece-buttons">
+          <button id="queen" class="pieces">Queen &#9813</button>
+          <button id="rook" class="pieces">Rook &#9814</button>
+          <button id="bishop" class="pieces">Bishop &#9815</button>
+          <button id="knight" class="pieces">Knight &#9816</button>
+        </div>
+        <p id="message"></p>
+        <p id="choose"></p>
+        <div class="reset">
+          <button class="reset-btn">Reset</button>
+        </div>
+      </div>
+    </div>
+    <script src="App.js"></script>
+  </body>
+</html>
