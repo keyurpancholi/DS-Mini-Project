@@ -1,7 +1,7 @@
 const queen = document.querySelector("#queen");
 const rook = document.querySelector("#rook");
 const bishop = document.querySelector("#bishop");
-const knight = document.querySelector("#knight");
+//const knight = document.querySelector("#knight");
 const resetbtn = document.querySelector('.reset-btn');
 
 let type = -1;
@@ -29,12 +29,12 @@ bishop.addEventListener("click", e => {
   type = 2;
 });
 
-knight.addEventListener("click", e => {
-  document.getElementById("message").innerHTML = "Piece chosen: &#9816";
-  document.getElementById("choose").innerText = "Choose source and destination";
-  resetGrid();
-  type = 3;
-});
+// knight.addEventListener("click", e => {
+//   document.getElementById("message").innerHTML = "Piece chosen: &#9816";
+//   document.getElementById("choose").innerText = "Choose source and destination";
+//   resetGrid();
+//   type = 3;
+// });
 
 resetbtn.addEventListener("click", e => {
   resetGrid();
@@ -131,9 +131,9 @@ const createDestination = destinationID => {
   else if(type===2){
     moveBishop(source, destination);
   }
-  else if(type===3){
-    moveKnight(source, destination);
-  }
+  // else if(type===3){
+  //   moveKnight(source, destination);
+  // }
 }
 
 console.log(source, destination);
@@ -293,82 +293,82 @@ const moveQueen = (source, destination) => {
 
 // Function to move the knight
 
-const moveKnight = (source, destination) => {
-  let queue = [];
-  let visited = [];
-  let parentForCell = [];
+// const moveKnight = (source, destination) => {
+//   let queue = [];
+//   let visited = [];
+//   let parentForCell = [];
 
-  for(let i=0;i<64;i++){
-    visited[i] = false;
-    parentForCell[i] = null;
-  }
+//   for(let i=0;i<64;i++){
+//     visited[i] = false;
+//     parentForCell[i] = null;
+//   }
 
-  queue.push(source);
-  let first = source.x*8 + source.y;
-  visited[first] = true;  
+//   queue.push(source);
+//   let first = source.x*8 + source.y;
+//   visited[first] = true;  
 
-  while(queue.length>0){
-    let cell = queue.shift();
+//   while(queue.length>0){
+//     let cell = queue.shift();
     
-    let neighbours = [
-      {x: cell.x -1, y: cell.y -2},
-      {x: cell.x -2, y: cell.y -1},
-      {x: cell.x -2, y: cell.y +1},
-      {x: cell.x -1, y: cell.y +2},
-      {x: cell.x +1, y: cell.y +2},
-      {x: cell.x +2, y: cell.y +1},               
-      {x: cell.x +2, y: cell.y -1},
-      {X: cell.x +1, y: cell.y -2}
-    ]
+//     let neighbours = [
+//       {x: cell.x -1, y: cell.y -2},
+//       {x: cell.x -2, y: cell.y -1},
+//       {x: cell.x -2, y: cell.y +1},
+//       {x: cell.x -1, y: cell.y +2},
+//       {x: cell.x +1, y: cell.y +2},
+//       {x: cell.x +2, y: cell.y +1},               
+//       {x: cell.x +2, y: cell.y -1},
+//       {X: cell.x +1, y: cell.y -2}
+//     ]
 
-    let currentKey = cell.x*8 + cell.y;
-    visited[currentKey] = true; 
-    // console.log("Visited " + currentKey);
+//     let currentKey = cell.x*8 + cell.y;
+//     visited[currentKey] = true; 
+//     // console.log("Visited " + currentKey);
 
-    for(let i=0;i<neighbours.length;i++){
-      if(neighbours[i].x < 0 || neighbours[i].x > 7){
-        continue;
-      }
-      if(neighbours[i].y < 0 || neighbours[i].y > 7){
-        continue;
-      }
-      if(grid[neighbours[i].x][neighbours[i].y]===1){
-        continue;
-      }
+//     for(let i=0;i<neighbours.length;i++){
+//       if(neighbours[i].x < 0 || neighbours[i].x > 7){
+//         continue;
+//       }
+//       if(neighbours[i].y < 0 || neighbours[i].y > 7){
+//         continue;
+//       }
+//       if(grid[neighbours[i].x][neighbours[i].y]===1){
+//         continue;
+//       }
 
-      let neighbourKey = neighbours[i].x*8 + neighbours[i].y;
-      if(visited[neighbourKey] || parentForCell[neighbourKey]!=null){
-        continue;
-      }
+//       let neighbourKey = neighbours[i].x*8 + neighbours[i].y;
+//       if(visited[neighbourKey] || parentForCell[neighbourKey]!=null){
+//         continue;
+//       }
 
-      queue.push(neighbours[i]);
-      parentForCell[neighbourKey] = currentKey;
-    }
-  }
+//       queue.push(neighbours[i]);
+//       parentForCell[neighbourKey] = currentKey;
+//     }
+//   }
 
-  let path = [];
-  let destinationKey = destination.x*8 + destination.y;
-  document.getElementById(`${destination.x}${destination.y}`).style.backgroundColor = "green";
-  console.log("Destination key " + destinationKey);
-  let iter = parentForCell[destinationKey];
+//   let path = [];
+//   let destinationKey = destination.x*8 + destination.y;
+//   document.getElementById(`${destination.x}${destination.y}`).style.backgroundColor = "green";
+//   console.log("Destination key " + destinationKey);
+//   let iter = parentForCell[destinationKey];
   
-  while(iter != null) {
-    path.unshift(iter);
-    iter = parentForCell[iter];
-  }
+//   while(iter != null) {
+//     path.unshift(iter);
+//     iter = parentForCell[iter];
+//   }
 
-  for(let i=0;i<path.length;i++){
-    let yc = path[i]%8;
-    let xc = Math.floor(path[i]/8);
+//   for(let i=0;i<path.length;i++){
+//     let yc = path[i]%8;
+//     let xc = Math.floor(path[i]/8);
 
-    let key = `${xc}${yc}`;
-    console.log(key);
-    let cell = document.getElementById(key);
-    cell.style.backgroundColor = '#ffbf80';
-    cell.innerText = `${i+1}`;
-  }
-  console.log(path);
-}
+//     let key = `${xc}${yc}`;
+//     console.log(key);
+//     let cell = document.getElementById(key);
+//     cell.style.backgroundColor = '#ffbf80';
+//     cell.innerText = `${i+1}`;
+//   }
+//   console.log(path);
+// }
 
 // Function to move bishop 
 
